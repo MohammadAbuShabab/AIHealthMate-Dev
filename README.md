@@ -149,5 +149,16 @@ This project addresses the gap by offering an AI-powered web platform that perfo
 🤖 Chatbot Interaction
 ![Screenshot 2025-06-12 141550](https://github.com/user-attachments/assets/fd42a85a-a0cf-4015-960f-caa6e949bc7f)
 
+🧾 Personal & Contact Information
+
+Project Developer: Mohamed H. M. Abushabab
+Email: mohamed.shabab597@gmail.com
+Portfolio Website: https://mohammadabushabab.github.io/Mohamed-H-M-Abushabab/
+
+© Copyright Notice
+
+This project is developed by Mohamed H. M. Abushabab as part of a personal and academic initiative.
+All rights reserved. Reproduction, distribution, or commercial use of this content without permission is strictly prohibited.
+
 
 
