@@ -1,135 +1,150 @@
-🩺 #Project Title: AI-Powered Healthcare Assistant
-🎯 Project Idea (Health Awareness)
+🩺#Project Title: AI-Powered Healthcare Assistant
+🎯 Project Overview
 
-The goal of this project is to develop a full-stack web application that offers personalized exercise guidance and health tracking using AI-based video analysis, along with a fitness chatbot for answering user queries. The system is designed to assist users (especially office workers or students) in maintaining physical wellness and preventing posture-related issues.
-🛠️ Tools and Technologies Used
-🔹 Frontend
+Problem Motivation:
+In today’s fast-paced and sedentary lifestyle—especially for students, programmers, and office workers—many suffer from posture-related health issues, eye fatigue, and neck stiffness due to prolonged screen exposure and lack of movement. Yet, there are very few personalized and interactive platforms that assist users with real-time feedback and guided exercises without visiting a physical clinic or gym.
+
+Solution:
+This project addresses the gap by offering an AI-powered web platform that performs real-time exercise analysis using a webcam, tracks repetitions using body landmarks, and responds to user queries through a fitness chatbot—all from the comfort of home.
+🛠️ Tools & Technologies Used
+🔹 Frontend (Client-side)
 
     Framework: Next.js (React)
 
     Languages: TypeScript, JavaScript, HTML, CSS
 
-    Styling: Tailwind CSS, Ant Design Components
+    Styling: Tailwind CSS + Ant Design UI
 
-    State Management: React Context
+    State Management: React Context API
 
-    HTTP Requests: Axios
+    Data Fetching: Axios
 
     Authentication: Context API with LocalStorage
 
-🔹 Backend
+🔹 Backend (Server-side)
 
     Framework: FastAPI (Python)
 
-    Database: MongoDB (via MongoClient)
+    Database: MongoDB via pymongo
 
-    AI/ML Processing:
+    AI Processing:
 
-        MediaPipe: For pose estimation and landmark tracking
+        MediaPipe (for real-time pose detection)
 
-        OpenCV: For video frame processing and drawing overlays
+        OpenCV (for frame drawing and analysis)
 
-    WebSockets: Real-time video feedback and exercise tracking
+    WebSockets: For live video communication between client and server
 
-    Data Models: Pydantic for input validation
+    Validation: Pydantic models
 
-🔹 Database
+🔹 Database Schema (MongoDB)
 
-    MongoDB (local): Used to store:
+    Users – stores credentials
 
-        User credentials
+    User_healthcareaiAttributes – stores physical attributes
 
-        Physical health attributes
+    RepetitionLogs – stores completed reps per exercise session
 
-        Repetition logs of neck exercises
+💡 Core Features Breakdown
+✅ 1. Authentication & Profile
 
-💡 Core Features
-✅ 1. User Authentication
+    Sign up or log in using username/email
 
-    Sign up / Sign in using username or email
+    Dashboard shows profile details
 
-    Secure credential checks (stored in MongoDB)
+✅ 2. Health Info Input
 
-    Profile data displayed on the dashboard
+    Collects BMI, sex, diabetes, hypertension, mobility, etc.
 
-✅ 2. Patient Health Info Submission
+    Stored in a dedicated collection for later use by the AI module
 
-    Collects:
+✅ 3. Real-Time AI Exercise Assistant
 
-        Gender, Age, Height, Hypertension, Diabetes, BMI, Mobility
+    Uses MediaPipe + OpenCV for neck movement tracking
 
-    Data stored under User_healthcareaiAttributes collection
+    Detects and tracks:
 
-✅ 3. AI-Based Neck Exercise Tracking
+        ✅ Forward/Backward tilt
 
-    Real-time video captured from webcam
+        ✅ Side tilt
 
-    MediaPipe analyzes the pose
+        ✅ Head rotation
 
-    Detects 3 key movements:
+    Shows real-time reps count and feedback
 
-        Forward/Backward tilt
+    Stores reps automatically to MongoDB after each session
 
-        Side tilt
+✅ 4. Fitness Chatbot
 
-        Neck rotation
+    Accepts user questions like:
 
-    Counts reps using angle tracking and movement thresholds
+        “What’s a good exercise for shoulder pain?”
 
-    Reps are stored in MongoDB after each session
+        “Suggest me a diet plan.”
 
-✅ 4. Chatbot Assistant
+    Displays fallback message if input is unclear
 
-    Accepts natural language queries
+    Future upgrade: Connect to GPT API for smart NLP answers
 
-    Responds with fitness and nutrition tips (future upgrade: connect to GPT API or rule-based responses)
+✅ 5. Developer/Technical Features
 
-    Handles unexpected input errors with fallback messages
+    Reset counters per exercise
 
-✅ 5. Admin/Developer Features
+    Encodes each frame to Base64 for live rendering on frontend
 
-    Repetition counters per exercise
+    Modular analyzer design (easily add future exercises like leg raises, eye strain, yoga poses)
 
-    Automatic frame encoding to Base64 for frontend rendering
+🧠 AI & Pose Detection Logic
 
-    Reset and tracking logic per movement
+    Landmark Extraction: Using MediaPipe’s Pose model
 
-    Modular code for other future exercises (WarriorPose, Leg Raises, Eye Exercise, etc.)
+    Angle Calculation: Between nose and midpoint of shoulders
 
-🧠 AI Logic Summary
+    Classification:
 
-    Pose landmarks are extracted using MediaPipe
+        Based on thresholds and direction changes
 
-    Angles are calculated between the nose and shoulder mid-point
+        Maintains historical angle smoothing using deque
 
-    Movement classification is based on:
+    Reps Logic:
 
-        Angle ranges
+        If movement switches from down → up → down = 1 rep
 
-        Direction changes (up/down logic)
-
-        History smoothing via deque
-
-    Detected reps trigger a logging function to store them in the database
-
-⚙️ Deployment Notes
-
-    MongoDB must run locally on port 27017
-
-    FastAPI runs on port 8000 (default)
-
-    Next.js client runs on port 3000
-
-    Real-time WebSocket connection established for live feedback
+        Stored in DB after the session ends
 
 🌱 Future Enhancements
 
-    JWT-based authentication with token expiration
+    ⏳ JWT authentication with token expiration
 
-    Integration with OpenAI/GPT API for advanced chatbot answers
+    🤖 GPT-based intelligent chatbot integration
 
-    Real-time alert system for incorrect posture
+    ⚠️ Real-time alerts for incorrect posture
 
-    Dashboard graphs for progress tracking
+    📊 Graph-based dashboard for health progress
 
-    Support for mobile webcam and responsive UI
+    📱 Mobile responsiveness and webcam support
+
+📸 Screenshots 
+🏠 Home Page
+![Screenshot 2025-06-12 141414](https://github.com/user-attachments/assets/cb1fc4a9-e02d-4204-a39a-02a6238500a3)
+
+🔐 Login / Signup
+![Screenshot 2025-06-12 141439](https://github.com/user-attachments/assets/38b5fb6d-729f-41b5-9028-d9b7c0c8e766)
+![Screenshot 2025-06-12 141451](https://github.com/user-attachments/assets/72e109fc-d3bc-4988-b479-8ca15c0162db)
+
+🧍‍♂️ Health Info Form
+![Screenshot 2025-06-12 141539](https://github.com/user-attachments/assets/9fdc1843-3bc1-4ca8-bbb1-694a31139387)
+![Screenshot 2025-06-12 141624](https://github.com/user-attachments/assets/99388114-8792-453a-a2c8-7da3da998dcd)
+
+
+🎥 Exercise Tracking Screen
+![Screenshot 2025-06-12 141609](https://github.com/user-attachments/assets/d3497a73-23d7-48fd-8daa-7821dec5da23)
+
+📊 Dashboard Stats (Progress)
+![Screenshot 2025-06-12 141539](https://github.com/user-attachments/assets/b3e7f352-445e-4cfe-8fdc-e5be46acdd88)
+
+🤖 Chatbot Interaction
+![Screenshot 2025-06-12 141550](https://github.com/user-attachments/assets/fd42a85a-a0cf-4015-960f-caa6e949bc7f)
+
+
+
