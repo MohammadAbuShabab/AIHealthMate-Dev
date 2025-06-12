@@ -1,4 +1,7 @@
+
 🩺#Project Title: AI-Powered Healthcare Assistant
+![logo (2)](https://github.com/user-attachments/assets/2c5c2147-4667-43a9-a42e-1515af85c668)
+
 🎯 Project Overview
 
 Problem Motivation:
