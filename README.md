@@ -152,7 +152,9 @@ This project addresses the gap by offering an AI-powered web platform that perfo
 🧾 Personal & Contact Information
 
 Project Developer: Mohamed H. M. Abushabab
+
 Email: mohamed.shabab597@gmail.com
+
 Portfolio Website: https://mohammadabushabab.github.io/Mohamed-H-M-Abushabab/
 
 © Copyright Notice
